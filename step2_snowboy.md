@@ -54,3 +54,18 @@ python demo.py ~/computer.pmdl
 _Yes, that right, the demo.py doesn't work in Python 3 right now_
 
 When you say the hotword (and ideally nothing else), the console should respond with `Keyword detected`.
+
+## Create Python3 Version
+
+For full transcription we'll need a Python 3 version. One is included with this repo. To create your
+own...
+
+```bash
+sudo apt install libatlas-base-dev swig
+git clone https://github.com/Kitt-AI/snowboy.git
+cd snowboy/swig/Python3
+make
+```
+
+The required files of `snowboydetect.py` and `_snowboydetect.so` can now be found in this directory.
+Replace the existing one and the demo will work with Python 3.
