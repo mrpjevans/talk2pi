@@ -50,6 +50,14 @@ You will need a Google account and you will have to provide billing information
 
 - If you are not on the Raspberry Pi, transfer the file over now
 
+## Installing
+
+To install the Speech-To-Text SDK:
+
+```bash
+pip3 install google-cloud-speech
+```
+
 ## Testing
 
 To test your access to the Google API, you can download their test applications:

@@ -2,6 +2,11 @@
 
 Talk to your Raspberry PI with ReSpeaker, Snowboy and Google Speech APIs
 
+## Notice
+
+Some files in this repository have been sourced from others to provide a central place
+for every required for this project. Please see individual scripts for copyright information.
+
 ## Requirements
 
 - Raspberry Pi 4 (Recommended, but a 3 will be fine)
