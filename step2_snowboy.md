@@ -39,9 +39,9 @@ On the Raspberry Pi, run the following commands (version correct at time of writ
 ```bash
 cd
 wget https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.1.tar.bz2
-tar xvf https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.1.tar.bz2d
+tar xvf rpi-arm-raspbian-8.0-1.1.1.tar.bz2d
 mv rpi-arm-raspbian-8.0-1.1.1 snowboy
-sudo apt install python-pyaudio python3-pyaudio sox libpython2.7
+sudo apt install python-pyaudio python3-pyaudio sox libpython2.7 libatlas-base-dev
 ```
 
 You can now test your model (change the filename to match yours!):
@@ -61,7 +61,7 @@ For full transcription we'll need a Python 3 version. One is included with this 
 own...
 
 ```bash
-sudo apt install libatlas-base-dev swig
+sudo apt install swig
 git clone https://github.com/Kitt-AI/snowboy.git
 cd snowboy/swig/Python3
 make

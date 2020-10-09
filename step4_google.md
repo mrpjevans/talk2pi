@@ -82,5 +82,12 @@ Now you can run a transcribing demonstration:
 python3 transcribe_streaming_infinite.py
 ```
 
-Let it start up (you can ignore the many errors, it's just trying to find a micrphone it can use), and try speaking. You should get
+If it doesn't work, comment out lines 203 and 204 (that refer to 'nanos') and try again:
+
+```
+# if result.result_end_time.nanos:
+#    result_nanos = result.result_end_time.nanos
+```
+
+Let it start up (you can ignore the many errors, it's just trying to find a microphone it can use), and try speaking. You should get
 a transcription on-screen of everything you've said!

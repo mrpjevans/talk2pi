@@ -65,7 +65,7 @@ cd mic_hat
 python3 pixels.py
 ```
 
-(Confession: These are the insructions but I'm yet to make them work!)
+(Confession: These are the instructions but I'm yet to make them work!)
 
 ### Test Audio
 
