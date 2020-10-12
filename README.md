@@ -104,14 +104,26 @@ Please note if you have other devices connected, you may have different identifi
 
 Snowboy provides the 'hotword' support for triggering 'full' recognition.
 
-Full instructions here: <step2_snowboy.md>
+Full instructions here: <https://github.com/mrpjevans/talk2pi/blob/main/step2_snowboy.md>
 
 ## Set up your Google service
 
 Google's APIs provide near real-time text recognition.
 
-Full instructions here: <step4_google.md>
+Full instructions here: <https://github.com/mrpjevans/talk2pi/blob/main/step4_google.md>
 
 ## Set up talk2pi
 
-TBA
+talk2pi.py is a starting point for building your own voice-controlled home assistant. It's basically a mash-up
+of the Snowboy code and the Google streaming code. With it you can add hooks to run your own code when
+certain commands are received.
+
+To try it out:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/home/pi/[your file]/json"
+python3 talk2pi.py /path/to/hotword-model-file.pmdl
+```
+
+You should now be able to say your hotword and the code then 'flips' into Google mode. After
+a spoken statement it will go back into hotword mode again.
