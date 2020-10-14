@@ -1,12 +1,17 @@
-import snowboydecoder
-import sys
-import os
-import importlib
-import signal
-import re
-import ResumableMicrophoneStream
-from google.cloud import speech
+from speak import speak
 import skills
+from google.cloud import speech
+import ResumableMicrophoneStream
+import re
+import signal
+import importlib
+import os
+import sys
+import snowboydecoder
+import pygame
+
+# Ensure pygame works headless
+os.putenv('SDL_VIDEODRIVER', 'dummy')
 
 # Google audio recording parameters and config
 SAMPLE_RATE = 16000
@@ -122,7 +127,9 @@ def processTranscript(transcript):
     for name, skill in skills.items():
         if transcript in skill.phrases:
             print(name)
-            skill.trigger(transcript)
+            say = skill.trigger(transcript)
+            if say is not None:
+                speak(say)
             return
 
 

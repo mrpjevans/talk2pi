@@ -118,12 +118,25 @@ talk2pi.py is a starting point for building your own voice-controlled home assis
 of the Snowboy code and the Google streaming code. With it you can add hooks to run your own code when
 certain commands are received.
 
+Start by installing these dependancies (one time):
+
+```bash
+pip3 install gTTS pygame
+sudo apt install libsox-fmt-mp3 libsdl-1.2 libsdl-mixer1.2
+```
+
 To try it out:
 
 ```bash
+export AUDIODEV=hw:0,0
 export GOOGLE_APPLICATION_CREDENTIALS="/home/pi/[your file]/json"
 python3 talk2pi.py /path/to/hotword-model-file.pmdl
 ```
 
 You should now be able to say your hotword and the code then 'flips' into Google mode. After
 a spoken statement it will go back into hotword mode again.
+
+Try saying "what time is it". If you've got something hooked up to the audio jack, you'll
+get a spoken response (using Google's tex-to-speech engine)
+
+Have a look at `skills/tell_time.py` for how to build you own skills.
