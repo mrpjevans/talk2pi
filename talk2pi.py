@@ -1,9 +1,12 @@
 import snowboydecoder
 import sys
+import os
+import importlib
 import signal
 import re
 import ResumableMicrophoneStream
 from google.cloud import speech
+import skills
 
 # Google audio recording parameters and config
 SAMPLE_RATE = 16000
@@ -23,6 +26,9 @@ streaming_config = speech.StreamingRecognitionConfig(
 
 # Snowboy object placeholder
 snowboy = None
+
+# Dictionary of skills
+skills = {}
 
 # Basic commandline checking
 if len(sys.argv) == 1:
@@ -101,7 +107,9 @@ def start_google_capture():
 
         # Listen and transcribe
         transcript = listen_print_loop(responses, stream)
+        processTranscript(transcript)
 
+        # Hook in
         print("Processing: " + transcript)
 
         # Close down and resume listening for hotword
@@ -109,5 +117,21 @@ def start_google_capture():
         stream._audio_stream.close()
         start_snowboy()
 
+
+def processTranscript(transcript):
+    for name, skill in skills.items():
+        if transcript in skill.phrases:
+            print(name)
+            skill.trigger(transcript)
+            return
+
+
+# Load skills
+for entry in os.scandir('./skills'):
+    if (entry.name.endswith(".py") and not entry.name.startswith('__')):
+        skill_name = os.path.splitext(entry.name)[0]
+        parent_module = __import__('skills.%s' % skill_name)
+        module = getattr(parent_module, skill_name)
+        skills[skill_name] = module
 
 start_snowboy()
