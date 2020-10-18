@@ -1,4 +1,5 @@
 from speak import speak
+from playaudio import playaudio
 import skills
 from google.cloud import speech
 import ResumableMicrophoneStream
@@ -10,8 +11,10 @@ import sys
 import snowboydecoder
 import pygame
 
+
 # Ensure pygame works headless
 os.putenv('SDL_VIDEODRIVER', 'dummy')
+pygame.init()
 
 # Google audio recording parameters and config
 SAMPLE_RATE = 16000
@@ -85,6 +88,9 @@ def start_google_capture():
     # Stop Snowboy to free up the audio device
     snowboy.terminate()
 
+    # React
+    playaudio('./hal9000/yes.mp3')
+
     # Start streaming to Google
     mic_manager = ResumableMicrophoneStream.ResumableMicrophoneStream(
         SAMPLE_RATE, CHUNK_SIZE)
@@ -112,10 +118,8 @@ def start_google_capture():
 
         # Listen and transcribe
         transcript = listen_print_loop(responses, stream)
-        processTranscript(transcript)
-
-        # Hook in
         print("Processing: " + transcript)
+        processTranscript(transcript)
 
         # Close down and resume listening for hotword
         stream._audio_stream.stop_stream()
