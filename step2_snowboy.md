@@ -39,7 +39,7 @@ On the Raspberry Pi, run the following commands (version correct at time of writ
 ```bash
 cd
 wget https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.1.tar.bz2
-tar xvf rpi-arm-raspbian-8.0-1.1.1.tar.bz2d
+tar xvf rpi-arm-raspbian-8.0-1.1.1.tar.bz2
 mv rpi-arm-raspbian-8.0-1.1.1 snowboy
 sudo apt install python-pyaudio python3-pyaudio sox libpython2.7 libatlas-base-dev
 ```
